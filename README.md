@@ -1,42 +1,28 @@
-# Nuxt 3 Minimal Starter
+# useRunTimeConfig outside setup causes rapid memory leak on dev server
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+`api/client.ts:`
 
-## Setup
+```
+const config = useRuntimeConfig()
 
-Make sure to install the dependencies:
+client = {
+  config: config.SERVER_API
+}
 
-```bash
-# yarn
-yarn install
+// in real use case would create $fetch or axios client
+// not relevant here because the error happens already
 
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+export default client
 ```
 
-## Development Server
+`npx nuxi dev`
 
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
+```
+[nuxt] [request error] nuxt instance unavailable
+  at useNuxtApp (./.nuxt/dist/server/server.mjs:400:13)  
+  at Module.useRuntimeConfig (./.nuxt/dist/server/server.mjs:408:10)  
+  at $id_ca7d507e (./.nuxt/dist/server/server.mjs:2760:38)  
+  at async __instantiateModule__ (./.nuxt/dist/server/server.mjs:3837:3)
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+At this point the dev server memory usage shoots up sharply, consuming all available memory on my laptop.
