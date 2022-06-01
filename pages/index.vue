@@ -1,4 +1,5 @@
 <script setup>
+import client from '~/api/client'
 </script>
 
 <template>
