@@ -18,4 +18,9 @@ export const useAuthStore = defineStore('auth', {
 
 ```
 
+```
+npx nuxt dev
+# open http://localhost:3001
+```
+
 Expected: This should produce an error telling the application developer not to do this.
