@@ -4,9 +4,9 @@ Error handling defined via `nuxt.config.ts`, `plugins/errors.ts`, `error.vue`.
 
 ## Actual
 
-Config doesn't work - is my config wrong?
+Config error intercepts don't work - is my config wrong?
 
-Plugins works, but the error being intercepted here is different from the final one that lands in `error.vue`
+Plugins error intercept works, but the error being intercepted here is different from the final one that lands in `error.vue`
 
 ## Expected
 
