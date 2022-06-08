@@ -1,42 +1,15 @@
-# Nuxt 3 Minimal Starter
+# Error Handling
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Error handling defined via `nuxt.config.ts`, `plugins/errors.ts`, `error.vue`.
 
-## Setup
+## Actual
 
-Make sure to install the dependencies:
+Config doesn't work - is my config wrong?
 
-```bash
-# yarn
-yarn install
+Plugins works, but the error being intercepted here is different from the final one that lands in `error.vue`
 
-# npm
-npm install
+## Expected
 
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+* Error properties should propigate.  I would prefer some way of conveying objects/arrays so they can be formatted.
+* Where is Nuxt internally rebuilding the error objects?  Is the behavior documented somewhere?  Is it something that can be overridden?
+* I don't understand why the config intercepts don't work.  Could be better documented.
